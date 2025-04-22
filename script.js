@@ -1,37 +1,32 @@
 const container = document.getElementById('butterfly-container');
 
-function createButterfly() {
+// Four corners of the screen
+const corners = [
+  { left: '0px', top: '0px' },
+  { right: '0px', top: '0px' },
+  { left: '0px', bottom: '0px' },
+  { right: '0px', bottom: '0px' }
+];
+
+function createButterfly(index) {
   const butterfly = document.createElement('img');
   butterfly.src = 'butterfly.png';
   butterfly.className = 'butterfly';
 
-  // Set initial position near a random corner
-  const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
-  const corner = positions[Math.floor(Math.random() * positions.length)];
-
-  let startX = 0;
-  let startY = 0;
-  if (corner.includes('right')) startX = window.innerWidth;
-  if (corner.includes('bottom')) startY = window.innerHeight;
-
-  butterfly.style.left = `${startX}px`;
-  butterfly.style.top = `${startY}px`;
-
-  // Random motion vector
-  const dx = (Math.random() - 0.5) * window.innerWidth * 1.5;
-  const dy = (Math.random() - 0.5) * window.innerHeight * 1.5;
-
-  // Random scale
-  const scale = 0.5 + Math.random() * 0.7;
-  butterfly.style.setProperty('--x', `${dx}px`);
-  butterfly.style.setProperty('--y', `${dy}px`);
-  butterfly.style.setProperty('--scale', scale);
+  // Apply corner position
+  Object.assign(butterfly.style, corners[index]);
 
   container.appendChild(butterfly);
 
+  // Remove after animation
   setTimeout(() => {
     butterfly.remove();
-  }, 8000);
+  }, 4000);
 }
 
-setInterval(createButterfly, 1200);
+// Appear butterflies from each corner
+setInterval(() => {
+  for (let i = 0; i < 4; i++) {
+    setTimeout(() => createButterfly(i), i * 500);
+  }
+}, 5000);
