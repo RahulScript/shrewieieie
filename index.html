@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Sorry Shree 🥺</title>
-  <link rel="stylesheet" href="style.css" />
-  <!-- Google Font for beautiful font -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="music.mp3" type="audio/mpeg" />
-    Your browser does not support audio.
-  </audio>
+  <!-- Fixed autoplay audio -->
+  <audio id="bg-music" src="music.mp3" autoplay loop muted></audio>
 
   <div class="container">
-    <div class="text-box">
+    <div class="text-wrapper">
       <h1 class="fade-in">Sorry Shree 🙇‍♂️</h1>
-      <p class="subtext fade-in">
+      <p class="sub-text fade-in-delay">
         Sorry lilac I won’t be saying anything ab seh !!<br>
-        I dont even know what I did but that 😔 takes all my highness,<br>
-        now Im just here with my crown off waiting for you to smile again<br>
+        I don't even know what I did but that 😔 takes all my highness,<br>
+        now I’m just here with my crown off waiting for you to smile again<br>
         (yeh sab chiz marwagi muhje ek din)
       </p>
     </div>
@@ -28,5 +24,16 @@
   <div id="butterfly-container"></div>
 
   <script src="script.js"></script>
+
+  <!-- Audio activation script -->
+  <script>
+    window.addEventListener('click', () => {
+      const audio = document.getElementById('bg-music');
+      audio.muted = false;
+      audio.play().catch((e) => {
+        console.log("Autoplay blocked:", e);
+      });
+    });
+  </script>
 </body>
 </html>
