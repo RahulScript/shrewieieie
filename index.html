@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sorry Shree 🙇</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: url('23.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Great Vibes', cursive;
+    }
+
+    h1 {
+      font-size: 4rem;
+      color: #8B008B;
+      text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.7);
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 1rem 2rem;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      animation: fadeInUp 2s ease forwards;
+      opacity: 0;
+      z-index: 10;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .butterfly {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('butterfly.png');
+      background-size: cover;
+      animation: floatDown 8s linear infinite;
+    }
+
+    @keyframes floatDown {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5rem;
+        padding: 0.7rem 1.5rem;
+      }
+
+      .butterfly {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Sorry Shree 🙇</h1>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="bg-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function createButterfly() {
+      const b = document.createElement('div');
+      b.classList.add('butterfly');
+      b.style.left = Math.random() * 100 + "vw";
+      b.style.animationDuration = (Math.random() * 2 + 6) + "s";
+      document.body.appendChild(b);
+      setTimeout(() => b.remove(), 9000);
+    }
+
+    setInterval(createButterfly, 400);
+  </script>
+</body>
+</html>
