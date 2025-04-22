@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url('23.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+  font-family: 'Segoe UI', cursive;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 3em;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 3s ease-in-out;
+  z-index: 1;
+  position: relative;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.butterfly {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  animation: fly 8s ease-in-out forwards;
+}
+
+@keyframes fly {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) scale(var(--scale)) rotate(360deg);
+  }
+}
