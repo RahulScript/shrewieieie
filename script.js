@@ -1,32 +1,28 @@
 const container = document.getElementById('butterfly-container');
 
-// Four corners of the screen
 const corners = [
-  { left: '0px', top: '0px' },
-  { right: '0px', top: '0px' },
-  { left: '0px', bottom: '0px' },
-  { right: '0px', bottom: '0px' }
+  { x: 0, y: 0 },
+  { x: window.innerWidth - 50, y: 0 },
+  { x: 0, y: window.innerHeight - 50 },
+  { x: window.innerWidth - 50, y: window.innerHeight - 50 }
 ];
 
-function createButterfly(index) {
+function createButterfly() {
   const butterfly = document.createElement('img');
   butterfly.src = 'butterfly.png';
   butterfly.className = 'butterfly';
 
-  // Apply corner position
-  Object.assign(butterfly.style, corners[index]);
+  // Choose a random corner from the 4 corners
+  const corner = corners[Math.floor(Math.random() * corners.length)];
+  butterfly.style.left = `${corner.x}px`;
+  butterfly.style.top = `${corner.y}px`;
 
   container.appendChild(butterfly);
 
-  // Remove after animation
+  // Fade in and out animation handled by CSS
   setTimeout(() => {
     butterfly.remove();
   }, 4000);
 }
 
-// Appear butterflies from each corner
-setInterval(() => {
-  for (let i = 0; i < 4; i++) {
-    setTimeout(() => createButterfly(i), i * 500);
-  }
-}, 5000);
+setInterval(createButterfly, 1200);
