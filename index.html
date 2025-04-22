@@ -2,21 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sorry Shree 🙇😭</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Sorry Shree 🥺</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('23.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+      font-family: 'Segoe UI', cursive;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      color: #C8A2C8; /* lilac */
+      font-size: 4em;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 3s ease-in-out;
+      z-index: 1;
+      position: relative;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 3s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .butterfly {
+      position: absolute;
+      width: 50px;
+      opacity: 0;
+      animation: fadeOnly 4s ease-in-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes fadeOnly {
+      0% { opacity: 0; }
+      25% { opacity: 1; }
+      75% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
+
   <audio autoplay loop>
     <source src="music.mp3" type="audio/mpeg">
     Your browser does not support audio.
   </audio>
-  
+
   <div class="container">
     <h1 class="fade-in">Sorry Shree 🙇‍♂️</h1>
   </div>
 
   <div id="butterfly-container"></div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+  <script>
+    const container = document.getElementById('butterfly-container');
+
+    // Four corners of the screen
+    const corners = [
+      { left: '0px', top: '0px' },
+      { right: '0px', top: '0px' },
+      { left: '0px', bottom: '0px' },
+      { right: '0px', bottom: '0px' }
+    ];
+
+    function createButterfly(index) {
+      const butterfly = document.createElement('img');
